@@ -6,6 +6,10 @@ Link to the archive folder: https://www.kaggle.com/datasets/yihaopuah/deep-fake-
 Download the link above, unzip the archive folder, then place in same directory as the Main.py file.
 
 
+
+Download the latest version of Python 3.11
+
+
 TensorFlow recommends upgrading pip before installing TensorFlow.
 
 Use the command: pip install --upgrade pip
