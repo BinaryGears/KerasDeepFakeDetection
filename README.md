@@ -4,6 +4,7 @@ This CNN model is based on this paper: https://doi.org/10.1109/ACCESS.2023.32514
 I have no affiliation with the authors of the paper linked above, I only used the paper as a guideline.
 <br></br>
 <br></br>
+# How to use
 Link to the archive folder: https://www.kaggle.com/datasets/yihaopuah/deep-fake-images
 <br></br>
 Download the link above, unzip the archive folder, then place in same directory as the Main.py file.
