@@ -1,10 +1,14 @@
+"""CNN is based on the structure proposed in this paper: https://doi.org/10.1109/ACCESS.2023.3251417"""
+
+"""
+Please respect the license attached to this project found in the LICENSE file
+if the LICENSE file is missing, please refer to the LICENSE found at this github repo below: 
+https://github.com/BinaryGears/KerasDeepFakeDetection/tree/main
+"""
 import pandas as pd
 import os
 from tensorflow import keras
 
-"""
-os.environ["KERAS_BACKEND"] = "torch"
-"""
 
 # Model parameters
 num_classes = 10
