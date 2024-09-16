@@ -1,4 +1,4 @@
-# KerasDeepFakeDetection
+# KerasDeepFakeDetection Credits
 This CNN model is based on this paper: https://doi.org/10.1109/ACCESS.2023.3251417
 <br></br>
 I have no affiliation with the authors of the paper linked above, I only used the paper as a guideline.
