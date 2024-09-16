@@ -12,7 +12,7 @@ Download the latest version of Python 3.11
 
 TensorFlow recommends upgrading pip before installing TensorFlow.
 
-Use the command: pip install --upgrade pip
+Use the command: ```pip install --upgrade pip```
 
 
 This project uses Keras 3.5.0 on top of TensorFlow.
