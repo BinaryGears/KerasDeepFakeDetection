@@ -17,10 +17,9 @@ TensorFlow recommends upgrading pip before installing TensorFlow.
 Use the command: ```pip install --upgrade pip```
 <br></br>
 <br></br>
-This project uses Keras 3.5.0 on top of TensorFlow.
+This project uses TensorFlow and Keras.
 <br></br>
-Use the command: ```pip install --upgrade keras```
-Then use the command: ```pip install tensorflow```
+Use the command: ```pip install tensorflow```
 <br></br>
 <br></br>
 You can then run the python file: ```python Main.py```
