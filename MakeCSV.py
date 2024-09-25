@@ -7,9 +7,16 @@ https://github.com/BinaryGears/KerasDeepFakeDetection/tree/main
 import pandas as pd
 import os
 
+if not os.path.exists("images"):
+    os.makedirs("images/train/fake_image")
+    os.makedirs("images/train/real_image")
+    os.makedirs("images/val/fake_image")
+    os.makedirs("images/val/real_image")
+    os.makedirs("images/test")
+
 training_path_fake = "images/train/fake_image"
 training_path_real = "images/train/real_image"
-validation_path_fake = "images/train/fake_image"
+validation_path_fake = "images/val/fake_image"
 validation_path_real = "images/val/real_image"
 
 files = os.listdir(training_path_fake)
