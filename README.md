@@ -4,7 +4,6 @@ This CNN model is based on this paper: https://doi.org/10.1109/ACCESS.2023.32514
 I have no affiliation with the authors of the paper linked above, I only used this paper as a guideline.
 <br></br>
 # How to use
-<br></br>
 Download the latest version of Python 3.11
 <br></br>
 <br></br>
