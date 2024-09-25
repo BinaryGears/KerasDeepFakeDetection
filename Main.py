@@ -15,13 +15,13 @@ num_classes = 10
 input_shape = (160, 160, 3)
 
 "Training data"
-df1 = pd.read_csv("archive/train/image_labels.csv")
+df1 = pd.read_csv("images/train/image_labels.csv")
 datagen1 = keras.preprocessing.image.ImageDataGenerator(
     rescale=1./255
 )
 train_generator = datagen1.flow_from_dataframe(
     dataframe=df1,
-    directory="archive/train/",
+    directory="images/train/",
     x_col="filename",
     y_col="class",
     class_mode="categorical",
@@ -30,13 +30,13 @@ train_generator = datagen1.flow_from_dataframe(
 )
 
 "Validation data"
-df2 = pd.read_csv("archive/val/image_labels.csv")
+df2 = pd.read_csv("images/val/image_labels.csv")
 datagen2 = keras.preprocessing.image.ImageDataGenerator(
     rescale=1./255
 )
 validation_generator = datagen2.flow_from_dataframe(
     dataframe=df2,
-    directory="archive/val/",
+    directory="images/val/",
     x_col="filename",
     y_col="class",
     class_mode="categorical",
@@ -106,10 +106,10 @@ model.compile(
     ],
 )
 
-"Number of rows proccessed in one iteration of training"
+"Number of rows processed in one iteration of training"
 batch_size = 64
 "The number of times the layer is ran for a specific image"
-epochs = 40
+epochs = 1
 
 callbacks = [
     keras.callbacks.ModelCheckpoint(filepath="model_at_epoch_{epoch}.keras"),
@@ -117,10 +117,15 @@ callbacks = [
 ]
 
 
-model.fit(train_generator,
+train = model.fit(train_generator,
           epochs=epochs,
           batch_size=batch_size,
           )
+
+val = model.fit(validation_generator,
+                epochs=epochs,
+                batch_size=batch_size,
+                )
 
 """TO HERE:"""
 
