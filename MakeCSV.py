@@ -25,7 +25,7 @@ filename_list = []
 category_list = []
 
 for f in files:
-    filename_list.append(training_path_fake + f)
+    filename_list.append("fake_image/" + f)
     category_list.append("fake")
 
 data = {
@@ -36,7 +36,7 @@ data = {
 files = os.listdir(training_path_real)
 
 for f in files:
-    filename_list.append(training_path_real + f)
+    filename_list.append("real_image/" + f)
     category_list.append("real")
 
 data = {
@@ -54,7 +54,7 @@ filename_list = []
 category_list = []
 
 for f in files:
-    filename_list.append(validation_path_fake + f)
+    filename_list.append("fake_image/" + f)
     category_list.append("fake")
 
 data = {
@@ -65,7 +65,7 @@ data = {
 files = os.listdir(validation_path_real)
 
 for f in files:
-    filename_list.append(validation_path_real + f)
+    filename_list.append("real_image/" + f)
     category_list.append("real")
 
 data = {
