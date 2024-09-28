@@ -5,19 +5,20 @@ https://github.com/BinaryGears/KerasDeepFakeDetection/tree/main
 """
 
 import pandas as pd
-
 from keras.src.utils.module_utils import tensorflow
+"""
 import visualkeras
 from PIL import ImageFont
+"""
 
 class Model:
     # Model parameters
     num_classes = 10
     input_shape = (256, 256, 3)
     "Number of rows processed in one iteration of training"
-    batch_size = 32
+    batch_size = 64
     "The number of times the layer is ran for a specific image"
-    epochs = 2
+    epochs = 4
 
     "Training data"
     df1 = pd.read_csv("images/train/image_labels.csv")
@@ -57,9 +58,9 @@ class Model:
             tensorflow.keras.layers.Input(shape=input_shape),
             tensorflow.keras.layers.Conv2D(8, (3,3)),
             tensorflow.keras.layers.PReLU(alpha_initializer=tensorflow.initializers.constant(0.25),
-                               alpha_regularizer=None,
-                               alpha_constraint=None,
-                               shared_axes=None,
+                                          alpha_regularizer=None,
+                                          alpha_constraint=None,
+                                          shared_axes=None,
                                ),
             tensorflow.keras.layers.BatchNormalization(),
             tensorflow.keras.layers.MaxPooling2D((2,2)),
@@ -171,17 +172,17 @@ class Model:
     model.save("modelfolder/model.hdf5", overwrite=True, save_format=None)
     model.save("modelfolder/model.keras", overwrite=True, save_format=None)
 
+
     model.fit(train_generator,
               epochs=epochs,
               batch_size=batch_size,
               validation_data=validation_generator,
               )
 
-
-
     """
+    model.summary()
+    
     font = ImageFont.truetype("arial.ttf",32)
     visualkeras.layered_view(model, font=font, to_file='outputLegend.png', legend=True)
     visualkeras.layered_view(model, font=font, to_file='outputLegendDim.png', legend=True, show_dimension=True)
-    model.summary()
     """
