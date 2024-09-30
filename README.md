@@ -33,13 +33,13 @@ Paper that talks about Separable Convolution Layers: https://arxiv.org/pdf/1610.
 <br></br>
 Paper that talks about PReLU: https://arxiv.org/pdf/1502.01852
 <br></br>
-Visualkeras citation: @misc{Gavrikov2020VisualKeras,
-  author = {Gavrikov, Paul},
-  title = {visualkeras},
-  year = {2020},
-  publisher = {GitHub},
-  journal = {GitHub repository},
-  howpublished = {\url{https://github.com/paulgavrikov/visualkeras}},
+Visualkeras citation: @misc{Gavrikov2020VisualKeras,<br></br>
+  author = {Gavrikov, Paul},<br></br>
+  title = {visualkeras},<br></br>
+  year = {2020},<br></br>
+  publisher = {GitHub},<br></br>
+  journal = {GitHub repository},<br></br>
+  howpublished = {\url{https://github.com/paulgavrikov/visualkeras}},<br></br>
 }
 <br></br>
 Link to original repository: https://github.com/BinaryGears/KerasDeepFakeDetection/
