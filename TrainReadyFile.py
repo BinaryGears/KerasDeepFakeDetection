@@ -14,7 +14,7 @@ class Model:
     "Number of rows processed in one iteration of training"
     batch_size = 64
     "The number of times the layer is ran for a specific image"
-    epochs = 2
+    epochs = 4
 
     "Training data"
     df1 = pd.read_csv("images/train/image_labels.csv")
@@ -148,7 +148,7 @@ class Model:
 
     model.compile(
         loss=tensorflow.keras.losses.CategoricalCrossentropy(),
-        optimizer=tensorflow.keras.optimizers.Adam(learning_rate=1e-3),
+        optimizer=tensorflow.keras.optimizers.Adam(learning_rate=1e-6),
         metrics=[
             tensorflow.keras.metrics.CategoricalAccuracy(name="acc"),
         ],
@@ -157,7 +157,7 @@ class Model:
     model.save("modelfolder/model.hdf5", overwrite=True, save_format=None)
     model.save("modelfolder/model.keras", overwrite=True, save_format=None)
 
-
+    
     history = model.fit(train_generator,
               epochs=epochs,
               batch_size=batch_size,
