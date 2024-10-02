@@ -15,6 +15,7 @@ class Model:
     batch_size = 64
     "The number of times the layer is ran for a specific image"
     epochs = 4
+    classlist = ['fake', 'real']
 
     "Training data"
     df1 = pd.read_csv("images/train/image_labels.csv")
@@ -30,6 +31,7 @@ class Model:
         class_mode="categorical",
         target_size=(256, 256),
         batch_size=batch_size,
+        classes=classlist
     )
 
     "Validation data"
@@ -44,7 +46,8 @@ class Model:
         y_col="class",
         class_mode="categorical",
         target_size=(256, 256),
-        batch_size=batch_size
+        batch_size=batch_size,
+        classes=classlist
     )
 
 
