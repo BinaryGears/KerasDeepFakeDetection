@@ -157,6 +157,11 @@ class Model:
         ],
     )
 
+    callbacks = [
+        tensorflow.keras.callbacks.ModelCheckpoint(filepath="modelfolder/model_at_epoch_{epoch}.keras"),
+        tensorflow.keras.callbacks.EarlyStopping(monitor="val_loss", patience=2),
+    ]
+
     model.save("modelfolder/model.hdf5", overwrite=True, save_format=None)
     model.save("modelfolder/model.keras", overwrite=True, save_format=None)
 
