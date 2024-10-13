@@ -25,7 +25,7 @@ You can then run the python file: ```python TrainReady.py```
 <br></br>
 <br></br>
 <br></br>
-# Other py files:
+# Other .py Files:
 Main.py is the original CNN model from the paper.
 <br></br>
 TrainReadyV2.py is a more VRAM efficient version of the model in TrainReady.py.
