@@ -56,13 +56,13 @@ class Model:
         [
 
             tensorflow.keras.layers.Input(shape=input_shape),
-            tensorflow.keras.layers.SeparableConv2D(4, (7,7)),
+            tensorflow.keras.layers.SeparableConv2D(4, (3, 3)),
             tensorflow.keras.layers.PReLU(alpha_initializer=tensorflow.initializers.constant(0.25),
                                           alpha_regularizer=None,
                                           alpha_constraint=None,
                                           shared_axes=None,
                                ),
-            tensorflow.keras.layers.Conv2D(8, (7,7)),
+            tensorflow.keras.layers.Conv2D(8, (3, 3)),
             tensorflow.keras.layers.PReLU(alpha_initializer=tensorflow.initializers.constant(0.25),
                                           alpha_regularizer=None,
                                           alpha_constraint=None,
@@ -71,13 +71,13 @@ class Model:
             tensorflow.keras.layers.BatchNormalization(),
             tensorflow.keras.layers.MaxPooling2D((2,2)),
 
-            tensorflow.keras.layers.Conv2D(16, (5, 5)),
+            tensorflow.keras.layers.Conv2D(16, (3, 3)),
             tensorflow.keras.layers.PReLU(alpha_initializer=tensorflow.initializers.constant(0.25),
                                alpha_regularizer=None,
                                alpha_constraint=None,
                                shared_axes=None,
                                ),
-            tensorflow.keras.layers.Conv2D(32, (5, 5)),
+            tensorflow.keras.layers.Conv2D(32, (3, 3)),
             tensorflow.keras.layers.PReLU(alpha_initializer=tensorflow.initializers.constant(0.25),
                                alpha_regularizer=None,
                                alpha_constraint=None,
@@ -101,13 +101,13 @@ class Model:
             tensorflow.keras.layers.BatchNormalization(),
             tensorflow.keras.layers.MaxPooling2D((2, 2)),
 
-            tensorflow.keras.layers.SeparableConv2D(256, (1, 1)),
+            tensorflow.keras.layers.SeparableConv2D(256, (3, 3)),
             tensorflow.keras.layers.PReLU(alpha_initializer=tensorflow.initializers.constant(0.25),
                                alpha_regularizer=None,
                                alpha_constraint=None,
                                shared_axes=None,
                                ),
-            tensorflow.keras.layers.Conv2D(512, (1, 1)),
+            tensorflow.keras.layers.Conv2D(512, (3, 3)),
             tensorflow.keras.layers.PReLU(alpha_initializer=tensorflow.initializers.constant(0.25),
                                alpha_regularizer=None,
                                alpha_constraint=None,
@@ -150,7 +150,7 @@ class Model:
 
 
     model.compile(
-        loss=tensorflow.keras.losses.CategoricalCrossentropy(),
+        loss=tensorflow.keras.losses.BinaryCrossentropy(),
         optimizer=tensorflow.keras.optimizers.Adam(learning_rate=1e-6),
         metrics=[
             tensorflow.keras.metrics.CategoricalAccuracy(name="acc"),
@@ -161,7 +161,7 @@ class Model:
         tensorflow.keras.callbacks.ModelCheckpoint(filepath="modelfolder/model_at_epoch_{epoch}.keras"),
         tensorflow.keras.callbacks.EarlyStopping(monitor="val_loss", patience=2),
     ]
-
+    
     model.save("modelfolder/model.hdf5", overwrite=True, save_format=None)
     model.save("modelfolder/model.keras", overwrite=True, save_format=None)
 
@@ -170,6 +170,7 @@ class Model:
               epochs=epochs,
               batch_size=batch_size,
               validation_data=validation_generator,
+              shuffle=True,
               )
 
     "Write the results of train and validation accuracy and loss to csv file"
