@@ -127,14 +127,15 @@ xception_base.trainable = False
 
 # Apply Xception to the output of the custom CNN (ensure the shapes are compatible)
 xception_output = xception_base(x)
-x = keras.layers.GlobalAveragePooling2D()(xception_output)
-x = keras.layers.Dense(256, activation='leaky_relu')(x)
-x = keras.layers.BatchNormalization()(x)
+x = keras.layers.Flatten()(xception_output)
 x = keras.layers.Dropout(0.5)(x)
-x = keras.layers.Dense(128, activation='leaky_relu')(x)
-x = keras.layers.BatchNormalization()(x)
+x = keras.layers.Dense(32, activation='leaky_relu')(x)
 x = keras.layers.Dropout(0.5)(x)
-output = keras.layers.Dense(num_classes, activation='softmax')(x)
+x = keras.layers.Dense(16, activation='leaky_relu')(x)
+x = keras.layers.Dropout(0.5)(x)
+x = keras.layers.Dense(16, activation='leaky_relu')(x)
+x = keras.layers.Dropout(0.5)(x)
+output = keras.layers.Dense(num_classes, activation='sigmoid')(x)
 
 # Final model combining custom CNN and Xception
 combined_model = keras.Model(inputs=custom_input, outputs=output)
@@ -142,12 +143,22 @@ combined_model = keras.Model(inputs=custom_input, outputs=output)
 # Compile the combined model
 combined_model.compile(
     loss=keras.losses.CategoricalCrossentropy(),
-    optimizer=keras.optimizers.Adam(learning_rate=1e-3),
-    metrics=['accuracy']
+    optimizer=keras.optimizers.Adam(learning_rate=1e-7),
+    metrics=[
+    keras.metrics.CategoricalAccuracy(name="acc")
+    ]
 )
 
+callbacks = [
+        keras.callbacks.ModelCheckpoint(filepath="modelfolder/model_at_epoch_{epoch}.keras"),
+        keras.callbacks.EarlyStopping(monitor="val_loss", patience=2),
+    ]
+
+combined_model.save("modelfolder/model.hdf5", overwrite=True, save_format=None)
+combined_model.save("modelfolder/model.keras", overwrite=True, save_format=None)
+
 # Train the combined model
-combined_model.fit(
+history = combined_model.fit(
     train_generator,
     epochs=epochs,
     validation_data=validation_generator,
@@ -218,3 +229,29 @@ def save_and_display_gradcam(img_path, heatmap, cam_path="save_cam_image.jpg", a
 # Save and display Grad-CAM result
 save_and_display_gradcam(img_path, heatmap)
 
+"Write the results of train and validation accuracy and loss to csv file"
+train_accuracy = []
+train_loss = []
+validation_accuracy = []
+validation_loss = []
+
+t_acc = history.history['acc']
+t_loss = history.history['loss']
+val_acc = history.history['val_acc']
+val_loss = history.history['val_loss']
+
+data = {
+    "accuracy": t_acc,
+    "loss": t_loss
+}
+
+train_df = pd.DataFrame(data)
+train_df.to_csv("train_acc_loss.csv", index=False)
+
+data = {
+    "accuracy": val_acc,
+    "loss": val_loss
+}
+
+train_df = pd.DataFrame(data)
+train_df.to_csv("validation_acc_loss.csv", index=False)
