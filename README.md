@@ -21,7 +21,7 @@ This project uses TensorFlow and Keras.
 Use the command: ```pip install tensorflow```
 <br></br>
 <br></br>
-You can then run the python file: ```python Main.py```
+You can then run the python file: ```python TrainReady.py```
 <br></br>
 <br></br>
 <br></br>
