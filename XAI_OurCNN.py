@@ -129,11 +129,26 @@ xception_base.trainable = False
 xception_output = xception_base(x)
 x = keras.layers.Flatten()(xception_output)
 x = keras.layers.Dropout(0.5)(x)
-x = keras.layers.Dense(32, activation='leaky_relu')(x)
+x = keras.layers.Dense(32)(x)
+keras.layers.PReLU(alpha_initializer=keras.initializers.constant(0.25),
+                               alpha_regularizer=None,
+                               alpha_constraint=None,
+                               shared_axes=None,
+                               ),
 x = keras.layers.Dropout(0.5)(x)
-x = keras.layers.Dense(16, activation='leaky_relu')(x)
+x = keras.layers.Dense(16)(x)
+keras.layers.PReLU(alpha_initializer=keras.initializers.constant(0.25),
+                               alpha_regularizer=None,
+                               alpha_constraint=None,
+                               shared_axes=None,
+                               ),
 x = keras.layers.Dropout(0.5)(x)
-x = keras.layers.Dense(16, activation='leaky_relu')(x)
+x = keras.layers.Dense(16)(x)
+keras.layers.PReLU(alpha_initializer=keras.initializers.constant(0.25),
+                               alpha_regularizer=None,
+                               alpha_constraint=None,
+                               shared_axes=None,
+                               ),
 x = keras.layers.Dropout(0.5)(x)
 output = keras.layers.Dense(num_classes, activation='sigmoid')(x)
 
