@@ -45,6 +45,7 @@ data = {
 }
 
 training_df = pd.DataFrame(data)
+training_df = training_df.sample(frac=1)
 training_df.to_csv("images/train/image_labels.csv", index = False)
 
 
@@ -73,5 +74,6 @@ data = {
     "class": category_list
 }
 
-training_df = pd.DataFrame(data)
-training_df.to_csv("images/val/image_labels.csv", index = False)
+validation_df = pd.DataFrame(data)
+validation_df = validation_df.sample(frac = 1 )
+validation_df.to_csv("images/val/image_labels.csv", index = False)
