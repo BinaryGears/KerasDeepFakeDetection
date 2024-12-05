@@ -150,7 +150,7 @@ class Model:
 
 
     model.compile(
-        loss=tensorflow.keras.losses.BinaryCrossentropy(),
+        loss=tensorflow.keras.losses.CategoricalCrossentropy(),
         optimizer=tensorflow.keras.optimizers.Adam(learning_rate=1e-6),
         metrics=[
             tensorflow.keras.metrics.CategoricalAccuracy(name="acc"),
