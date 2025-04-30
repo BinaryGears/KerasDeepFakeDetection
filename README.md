@@ -26,13 +26,9 @@ You can then run the python file: ```python TrainReadyFile.py```
 <br></br>
 <br></br>
 # Other .py Files:
-Main.py is the original CNN model from the paper.
+OriginalPaperModel.py is the original CNN model from the paper.
 <br></br>
-TrainReadyFileV2.py is a more VRAM efficient version of the model in TrainReady.py.
-<br></br>
-NewModel.py was a step in the direction of making TrainReady.py.
-<br></br>
-FinalNewModel.py was the final step before some sort of train ready file.
+OldTrainReadyFile.py is a more VRAM efficient version of the model in TrainReady.py.
 <br></br>
 # KerasDeepFakeDetection Credits
 Paper that this CNN model is in comparison to: https://doi.org/10.1109/ACCESS.2023.3251417
