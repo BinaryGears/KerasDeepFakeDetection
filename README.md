@@ -1,3 +1,5 @@
+# This was more of a place to dump all my files while I was working during my capstone, I did not attempt to keep things nice and tidy here; if you are in the group using my code and found yourself here, please use the other repo located here: https://github.com/BinaryGears/PyCharmProjectForDeepfake_detectionGroup
+<br></br>
 # How to use this
 Download the latest version of Python 3.11
 <br></br>
